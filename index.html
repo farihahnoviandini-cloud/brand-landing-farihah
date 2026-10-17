@@ -8,20 +8,32 @@
 </head>
 <body>
 
-    <!-- STICKY NAVBAR DENGAN LOGO 1:1 -->
-    <header class="navbar">
-        <div class="brand-box">
-            <img src="assets/images/logo.png" alt="Logo Brand" class="brand-logo">
-            <span class="brand-name">Nike Store</span>
-        </div>
-        <nav class="nav-links">
-            <a href="#promo">Promo</a>
-            <a href="#terlaris">Terlaris</a>
-            <a href="#koleksi">Koleksi</a>
-            <a href="#prestasi">Prestasi</a>
-            <a href="#order" class="btn-nav">Beli Sekarang</a>
-        </nav>
-    </header>
+    <!-- HEADER NAVBAR DENGAN FITUR PURE CSS MOBILE MENU -->
+  <header class="navbar">
+  <div class="brand-box">
+    <img src="assets/images/logo.png" alt="Logo Brand" class="brand-logo">
+    <span class="brand-name">Nike Store</span>
+  </div>
+
+  <!-- 1. CHECKBOX TERSEMBUNYI (PENGGANTI JAVASCRIPT) -->
+  <input type="checkbox" id="menu-toggle" class="menu-checkbox">
+
+  <!-- 2. TOMBOL ICON HAMBURGER (GARIS 3) UNTUK HP -->
+  <label for="menu-toggle" class="menu-btn">
+    <span class="bar"></span>
+    <span class="bar"></span>
+    <span class="bar"></span>
+  </label>
+
+  <!-- 3. DAFTAR TAUTAN NAVIGASI -->
+  <nav class="nav-links">
+    <a href="#promo">Promo</a>
+    <a href="#terlaris">Terlaris</a>
+    <a href="#koleksi">Koleksi</a>
+    <a href="#prestasi">Prestasi</a>
+    <a href="#order" class="btn-buy">Beli Sekarang</a>
+  </nav>
+  </header>
 
     <main>
         <!-- SECTION 1: IMAGE CAROUSEL (PURE CSS SCROLL-SNAP) -->

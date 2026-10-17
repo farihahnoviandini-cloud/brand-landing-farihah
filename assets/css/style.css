@@ -566,3 +566,70 @@ body {
         transform: translateY(0);
     }
 }
+
+/* ========================================================
+   RESPONSIVE DESIGN & PURE CSS HAMBURGER MENU (<768px)
+   ======================================================== */
+
+.menu-checkbox {
+  display: none; /* Sembunyikan checkbox asli */
+}
+
+.menu-btn {
+  display: none; /* Sembunyikan tombol hamburger di layar komputer/PC */
+  cursor: pointer;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.menu-btn .bar {
+  width: 25px;
+  height: 3px;
+  background-color: #ffffff;
+  border-radius: 2px;
+  transition: all 0.3s ease;
+}
+
+/* KONDISI SAAT DIBUKA DI LAYAR HP / TABLET (<768px) */
+@media (max-width: 768px) {
+  .menu-btn {
+    display: flex; /* Munculkan tombol hamburger di HP */
+  }
+
+  .nav-links {
+    display: none; /* Sembunyikan menu desktop secara default */
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background: rgba(10, 10, 12, 0.95);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    flex-direction: column;
+    align-items: center;
+    padding: 24px 0;
+    gap: 18px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
+  }
+
+  .nav-links a {
+    font-size: 1.1rem;
+  }
+
+  /* SAAT CHECKBOX DICENTANG: MUNCULKAN MENU */
+  .menu-checkbox:checked ~ .nav-links {
+    display: flex;
+  }
+
+  /* ANIMASI HAMBURGER BERUBAH JADI 'X' */
+  .menu-checkbox:checked ~ .menu-btn .bar:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+  }
+  .menu-checkbox:checked ~ .menu-btn .bar:nth-child(2) {
+    opacity: 0;
+  }
+  .menu-checkbox:checked ~ .menu-btn .bar:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+  }
+}
