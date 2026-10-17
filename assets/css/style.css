@@ -1,371 +1,568 @@
 /* ==========================================================================
-   NIKE OFFICIAL STEALTH x GLASSMORPHISM FULL STYLESHEET
+   1. RESET & DASAR UTAMA (THEME & TYPOGRAPHY)
    ========================================================================== */
-
-/* 1. FONTS & ROOT VARIABLES */
-@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;700;800&display=swap');
-
-:root {
-  --bg-dark: #0a0a0c;
-  --glass-bg: rgba(255, 255, 255, 0.04);
-  --glass-border: rgba(255, 255, 255, 0.12);
-  --glass-blur: blur(16px);
-  --text-main: #ffffff;
-  --text-muted: #a1a1aa;
-  --font-nike-bold: 'Bebas Neue', sans-serif;
-  --font-nike-body: 'Inter', sans-serif;
-  --transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-/* 2. BASE STYLES */
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 html {
-  scroll-behavior: smooth;
+    scroll-behavior: smooth;
 }
 
 body {
-  background-color: var(--bg-dark);
-  color: var(--text-main);
-  font-family: var(--font-nike-body);
-  overflow-x: hidden;
-  line-height: 1.5;
+    font-family: 'Segoe UI', system-ui, -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+    color: #f1f5f9;
+    line-height: 1.6;
+    background-color: #0b0f19; /* Theme Gelap Mewah Cyberpunk/Ultra-modern */
+    overflow-x: hidden;
 }
 
-/* 3. NAVIGATION (GLASSMORPHISM) */
-header {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  z-index: 1000;
-  background: rgba(10, 10, 12, 0.7);
-  backdrop-filter: var(--glass-blur);
-  -webkit-backdrop-filter: var(--glass-blur);
-  border-bottom: 1px solid var(--glass-border);
+.container {
+    max-width: 1120px;
+    margin: 0 auto;
+    padding: 0 24px;
 }
 
+.text-center { text-align: center; }
+.text-white { color: #ffffff !important; }
+
+/* ==========================================================================
+   2. STICKY NAVBAR ULTRA-GLASSMORPHISM & GLOW
+   ========================================================================== */
 .navbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  max-width: 1300px;
-  margin: 0 auto;
-  padding: 16px 24px;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background: rgba(11, 15, 25, 0.75);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 14px 36px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.logo-container {
-  display: flex;
-  align-items: center;
-  gap: 12px;
+.brand-box {
+    display: flex;
+    align-items: center;
+    gap: 14px;
 }
 
-.logo-container img {
-  height: 32px;
-  filter: brightness(0) invert(1);
-  transition: var(--transition);
+/* Kunci Rasio Logo 1:1 */
+.brand-logo {
+    width: 44px;
+    height: 44px;
+    aspect-ratio: 1/1;
+    object-fit: cover;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 0 15px rgba(56, 189, 248, 0.3);
+    transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
-.logo-container img:hover {
-  transform: scale(1.08);
+.brand-logo:hover {
+    transform: rotate(12deg) scale(1.15);
 }
 
 .brand-name {
-  font-family: var(--font-nike-body);
-  font-weight: 800;
-  font-size: 1.25rem;
-  letter-spacing: -0.5px;
-  text-transform: uppercase;
+    color: #ffffff;
+    font-size: 22px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    background: linear-gradient(135deg, #ffffff, #94a3b8);
+    background-clip: text; /* <--- Tambahkan baris ini */
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
 .nav-links {
-  display: flex;
-  list-style: none;
-  gap: 32px;
+    display: flex;
+    align-items: center;
+    gap: 24px;
 }
 
 .nav-links a {
-  color: var(--text-muted);
-  text-decoration: none;
-  font-size: 0.95rem;
-  font-weight: 500;
-  transition: var(--transition);
+    color: #cbd5e1;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 600;
+    position: relative;
+    transition: color 0.3s ease;
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: -6px;
+    left: 0;
+    width: 0%;
+    height: 2px;
+    background: #38bdf8;
+    border-radius: 2px;
+    transition: width 0.3s ease;
 }
 
 .nav-links a:hover {
-  color: var(--text-main);
+    color: #38bdf8;
 }
 
-.btn-buy {
-  background: #ffffff;
-  color: #000000;
-  padding: 10px 24px;
-  border-radius: 30px;
-  font-weight: 700;
-  font-size: 0.9rem;
-  text-decoration: none;
-  transition: var(--transition);
+.nav-links a:hover::after {
+    width: 100%;
 }
 
-.btn-buy:hover {
-  background: #e4e4e7;
-  transform: translateY(-2px);
-  box-shadow: 0 10px 25px rgba(255, 255, 255, 0.2);
+.btn-nav {
+    background: linear-gradient(135deg, #2563eb, #38bdf8);
+    color: #ffffff !important;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-weight: 700;
+    box-shadow: 0 4px 20px rgba(37, 99, 235, 0.4);
+    transition: all 0.3s ease !important;
 }
 
-/* 4. HERO BANNER (NIKE TYPOGRAPHY + GLASS CARD) */
-.hero-promo {
-  position: relative;
-  width: 100%;
-  height: 92vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-  background: #000000;
+.btn-nav::after {
+    display: none !important;
 }
 
-.hero-bg-img {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  filter: brightness(0.7);
-}
-
-.hero-overlay-content {
-  position: relative;
-  z-index: 10;
-  text-align: center;
-  color: #ffffff;
-  max-width: 850px;
-  padding: 48px 36px;
-  background: rgba(0, 0, 0, 0.45);
-  backdrop-filter: var(--glass-blur);
-  -webkit-backdrop-filter: var(--glass-blur);
-  border: 1px solid var(--glass-border);
-  border-radius: 24px;
-  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.7);
-  animation: fadeInUp 1s ease forwards;
-}
-
-.sub-tagline {
-  font-size: 1.15rem;
-  font-weight: 500;
-  color: var(--text-muted);
-  margin-bottom: 8px;
-  letter-spacing: 1px;
-}
-
-.nike-headline {
-  font-family: var(--font-nike-bold);
-  font-size: clamp(4rem, 9.5vw, 7.5rem);
-  line-height: 0.88;
-  letter-spacing: 1.5px;
-  text-transform: uppercase;
-  margin-bottom: 16px;
-  font-weight: 400;
-}
-
-.nike-description {
-  font-size: 1rem;
-  color: #e4e4e7;
-  max-width: 620px;
-  margin: 0 auto 28px auto;
-  line-height: 1.5;
-}
-
-.btn-nike-pill {
-  display: inline-block;
-  background: #ffffff;
-  color: #000000;
-  padding: 12px 36px;
-  border-radius: 30px;
-  font-weight: 700;
-  font-size: 0.95rem;
-  text-decoration: none;
-  transition: var(--transition);
-}
-
-.btn-nike-pill:hover {
-  background: #e4e4e7;
-  transform: scale(1.04);
-}
-
-/* 5. RUNNING TICKER DIVIDER */
-.ticker-wrap {
-  width: 100%;
-  background: #ffffff;
-  color: #000000;
-  padding: 14px 0;
-  overflow: hidden;
-  white-space: nowrap;
-}
-
-.ticker-move {
-  display: inline-block;
-  animation: ticker 20s linear infinite;
-}
-
-.ticker-item {
-  display: inline-block;
-  font-family: var(--font-nike-bold);
-  font-size: 1.6rem;
-  letter-spacing: 2px;
-  padding: 0 24px;
-}
-
-@keyframes ticker {
-  0% { transform: translate3d(0, 0, 0); }
-  100% { transform: translate3d(-50%, 0, 0); }
-}
-
-/* 6. CONTENT SECTIONS */
-.section-container {
-  max-width: 1300px;
-  margin: 100px auto;
-  padding: 0 24px;
-}
-
-.section-title {
-  font-family: var(--font-nike-bold);
-  font-size: 3.2rem;
-  text-transform: uppercase;
-  letter-spacing: 1.5px;
-  margin-bottom: 40px;
-  border-left: 4px solid #ffffff;
-  padding-left: 16px;
-}
-
-/* 7. GRID CARDS (KOLEKSI & PRESTASI) */
-.grid-cards {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 24px;
-}
-
-.card {
-  background: var(--glass-bg);
-  backdrop-filter: var(--glass-blur);
-  -webkit-backdrop-filter: var(--glass-blur);
-  border: 1px solid var(--glass-border);
-  border-radius: 18px;
-  overflow: hidden;
-  transition: var(--transition);
-}
-
-.card:hover {
-  transform: translateY(-8px);
-  background: rgba(255, 255, 255, 0.08);
-  border-color: rgba(255, 255, 255, 0.35);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
-}
-
-.card-img-wrapper {
-  overflow: hidden;
-  aspect-ratio: 1 / 1;
-  background: #111113;
-}
-
-.card-img-wrapper.ratio-16-9 {
-  aspect-ratio: 16 / 9;
-}
-
-.card-img-wrapper img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.card:hover .card-img-wrapper img {
-  transform: scale(1.08);
-}
-
-.card-body {
-  padding: 24px;
-}
-
-.card-title {
-  font-family: var(--font-nike-bold);
-  font-size: 1.8rem;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  margin-bottom: 6px;
-}
-
-.card-desc {
-  font-size: 0.9rem;
-  color: var(--text-muted);
-}
-
-/* 8. FOOTER */
-footer {
-  background: #000000;
-  border-top: 1px solid var(--glass-border);
-  padding: 40px 0;
-  text-align: center;
-  color: var(--text-muted);
-  font-size: 0.9rem;
-}
-
-/* 9. ANIMATIONS */
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+.btn-nav:hover {
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 8px 25px rgba(56, 189, 248, 0.6);
 }
 
 /* ==========================================================================
-   SLIDER BUTTONS WITH GLASSMORPHISM CIRCLES
+   3. SECTION 1: PURE CSS CAROUSEL DENGAN SCROLL-SNAP & FLOATING CAPTION
    ========================================================================== */
-
-.slider-nav {
-  display: flex;
-  justify-content: flex-end;
-  gap: 12px;
-  margin-bottom: 20px;
+.carousel-container {
+    width: 100%;
+    overflow: hidden;
+    background-color: #000000;
+    position: relative;
 }
 
-.slider-btn {
-  width: 48px;
-  height: 48px;
-  border-radius: 50%; /* Membuat tombol berbentuk Lingkaran Presisi */
-  background: rgba(255, 255, 255, 0.08); /* Background Lingkaran Kaca */
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.2); /* Border Kaca Tipis */
-  color: #ffffff;
-  font-size: 1.2rem;
-  font-weight: bold;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-  outline: none;
+.carousel-slide {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
 }
 
-/* Efek Hover Lingkaran */
-.slider-btn:hover {
-  background: #ffffff;
-  color: #000000;
-  border-color: #ffffff;
-  transform: scale(1.08);
-  box-shadow: 0 8px 20px rgba(255, 255, 255, 0.25);
+.carousel-slide::-webkit-scrollbar {
+    height: 6px;
 }
 
-.slider-btn:active {
-  transform: scale(0.95);
+.carousel-slide::-webkit-scrollbar-thumb {
+    background: linear-gradient(90deg, #2563eb, #38bdf8);
+    border-radius: 10px;
+}
+
+.carousel-item {
+    flex: 0 0 100%;
+    scroll-snap-align: start;
+    position: relative;
+    overflow: hidden;
+}
+
+.carousel-item img {
+    width: 100%;
+    height: 500px;
+    object-fit: cover;
+    display: block;
+    filter: brightness(0.85);
+    transition: transform 0.8s ease, filter 0.8s ease;
+}
+
+.carousel-item:hover img {
+    transform: scale(1.04);
+    filter: brightness(1);
+}
+
+.carousel-caption {
+    position: absolute;
+    bottom: 40px;
+    left: 50px;
+    background: rgba(15, 23, 42, 0.65);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    color: #ffffff;
+    padding: 16px 32px;
+    border-radius: 14px;
+    font-size: 24px;
+    font-weight: 800;
+    letter-spacing: 0.5px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    animation: fadeInUp 0.8s ease;
+}
+
+/* ==========================================================================
+   4. SECTION UMUM & STYLING JUDUL
+   ========================================================================== */
+.section { 
+    padding: 80px 0; 
+}
+
+.section-bg { 
+    background: #0f172a; 
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.section-title {
+    font-size: 32px;
+    font-weight: 800;
+    text-align: center;
+    margin-bottom: 45px;
+    color: #ffffff;
+    letter-spacing: -0.5px;
+    position: relative;
+}
+
+.section-title::after {
+    content: '';
+    display: block;
+    width: 80px;
+    height: 4px;
+    background: linear-gradient(90deg, #2563eb, #38bdf8);
+    margin: 12px auto 0 auto;
+    border-radius: 4px;
+    box-shadow: 0 0 12px rgba(56, 189, 248, 0.5);
+}
+
+/* ==========================================================================
+   5. SECTION 2: PRODUK TERLARIS (CARD GLASSMORPHISM & GLOW HOVER)
+   ========================================================================== */
+.bestseller-card {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    background: rgba(30, 41, 59, 0.4);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 20px;
+    padding: 36px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.bestseller-card:hover {
+    transform: translateY(-8px);
+    border-color: rgba(56, 189, 248, 0.4);
+    box-shadow: 0 25px 50px rgba(37, 99, 235, 0.25);
+}
+
+.bestseller-img-wrapper {
+    overflow: hidden;
+    border-radius: 16px;
+    flex-shrink: 0;
+}
+
+.bestseller-img {
+    width: 340px;
+    height: 340px;
+    object-fit: cover;
+    display: block;
+    border-radius: 16px;
+    transition: transform 0.6s ease;
+}
+
+.bestseller-card:hover .bestseller-img {
+    transform: scale(1.08) rotate(-2deg);
+}
+
+.badge {
+    background: linear-gradient(135deg, #fef08a, #eab308);
+    color: #422006;
+    font-size: 13px;
+    font-weight: 800;
+    padding: 6px 14px;
+    border-radius: 20px;
+    display: inline-block;
+    margin-bottom: 12px;
+    box-shadow: 0 4px 12px rgba(234, 179, 8, 0.3);
+}
+
+.bestseller-info h3 {
+    font-size: 28px;
+    font-weight: 800;
+    color: #ffffff;
+    margin-bottom: 10px;
+}
+
+.price {
+    font-size: 24px;
+    font-weight: 800;
+    color: #38bdf8;
+    margin-bottom: 14px;
+}
+
+.desc {
+    color: #94a3b8;
+    font-size: 15px;
+    margin-bottom: 24px;
+}
+
+.btn-primary {
+    display: inline-block;
+    background: linear-gradient(135deg, #2563eb, #1d4ed8);
+    color: #ffffff;
+    padding: 14px 28px;
+    border-radius: 10px;
+    text-decoration: none;
+    font-weight: 700;
+    box-shadow: 0 6px 20px rgba(37, 99, 235, 0.4);
+    transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(37, 99, 235, 0.6);
+    background: linear-gradient(135deg, #1d4ed8, #2563eb);
+}
+
+/* ==========================================================================
+   6. SECTION 3: GALERI 4 GAMBAR (CARD ZOOM & GLOW EFFECT)
+   ========================================================================== */
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 24px;
+}
+
+.gallery-card {
+    background: rgba(30, 41, 59, 0.3);
+    backdrop-filter: blur(8px);
+    border-radius: 16px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    text-align: center;
+    padding-bottom: 20px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.gallery-card:hover {
+    transform: translateY(-10px);
+    border-color: rgba(56, 189, 248, 0.4);
+    box-shadow: 0 15px 35px rgba(56, 189, 248, 0.2);
+}
+
+.gallery-img-wrapper {
+    overflow: hidden;
+    height: 220px;
+}
+
+.gallery-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+}
+
+.gallery-card:hover img {
+    transform: scale(1.1);
+}
+
+.gallery-card h4 {
+    margin-top: 18px;
+    font-size: 17px;
+    font-weight: 700;
+    color: #ffffff;
+}
+
+/* ==========================================================================
+   7. SECTION 4: 2 ARTIKEL PRESTASI (MODERN CARDS)
+   ========================================================================== */
+.articles-wrapper {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 28px;
+}
+
+.article-card {
+    background: rgba(30, 41, 59, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    transition: all 0.4s ease;
+}
+
+.article-card:hover {
+    transform: translateY(-8px);
+    border-color: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+}
+
+.article-img-wrapper {
+    overflow: hidden;
+    height: 200px;
+}
+
+.article-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+}
+
+.article-card:hover .article-img {
+    transform: scale(1.08);
+}
+
+.article-body { 
+    padding: 24px; 
+}
+
+.article-date {
+    font-size: 13px;
+    font-weight: 600;
+    color: #38bdf8;
+    margin-bottom: 8px;
+    display: block;
+}
+
+.article-body h3 {
+    font-size: 19px;
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 10px;
+    line-height: 1.4;
+}
+
+.article-body p {
+    color: #94a3b8;
+    font-size: 14px;
+}
+
+/* ==========================================================================
+   8. SECTION 5: CARA BELI (DARK GLASSMORPHISM STEPS)
+   ========================================================================== */
+.section-order {
+    background: linear-gradient(180deg, #0b0f19 0%, #020617 100%);
+    position: relative;
+}
+
+.steps-grid {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 28px;
+    margin-bottom: 45px;
+}
+
+.step-box {
+    background: rgba(30, 41, 59, 0.5);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    padding: 30px 24px;
+    border-radius: 16px;
+    flex: 1 1 250px;
+    max-width: 320px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    transition: all 0.4s ease;
+}
+
+.step-box:hover {
+    transform: translateY(-8px);
+    border-color: #38bdf8;
+    box-shadow: 0 15px 35px rgba(56, 189, 248, 0.25);
+    background: rgba(30, 41, 59, 0.8);
+}
+
+.step-num {
+    width: 46px;
+    height: 46px;
+    background: linear-gradient(135deg, #38bdf8, #0284c7);
+    color: #0f172a;
+    border-radius: 50%;
+    font-size: 18px;
+    font-weight: 800;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 18px auto;
+    box-shadow: 0 0 20px rgba(56, 189, 248, 0.5);
+}
+
+.step-box h4 {
+    margin-bottom: 10px;
+    font-size: 18px;
+    font-weight: 700;
+    color: #ffffff;
+}
+
+.step-box p {
+    font-size: 14px;
+    color: #94a3b8;
+}
+
+.cta-actions {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.btn-whatsapp {
+    background: linear-gradient(135deg, #16a34a, #15803d);
+    color: #ffffff;
+    padding: 14px 28px;
+    border-radius: 10px;
+    text-decoration: none;
+    font-weight: 700;
+    box-shadow: 0 6px 20px rgba(22, 163, 74, 0.4);
+    transition: all 0.3s ease;
+}
+
+.btn-whatsapp:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(22, 163, 74, 0.6);
+}
+
+.btn-marketplace {
+    background: linear-gradient(135deg, #ea580c, #c2410c);
+    color: #ffffff;
+    padding: 14px 28px;
+    border-radius: 10px;
+    text-decoration: none;
+    font-weight: 700;
+    box-shadow: 0 6px 20px rgba(234, 88, 12, 0.4);
+    transition: all 0.3s ease;
+}
+
+.btn-marketplace:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(234, 88, 12, 0.6);
+}
+
+/* ==========================================================================
+   9. FOOTER
+   ========================================================================== */
+.footer {
+    background: #020617;
+    color: #64748b;
+    text-align: center;
+    padding: 30px 0;
+    font-size: 14px;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* KEYFRAME ANIMASI CAPTION */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
