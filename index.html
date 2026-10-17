@@ -25,22 +25,32 @@
 
     <main>
         <!-- SECTION 1: IMAGE CAROUSEL (PURE CSS SCROLL-SNAP) -->
-        <section id="promo" class="carousel-container">
-            <div class="carousel-slide">
-                <div class="carousel-item">
-                    <img src="assets/images/banner-1.jpg" alt="Promo 1">
-                    <div class="carousel-caption">Koleksi Musim Baru 2026</div>
-                </div>
-                <div class="carousel-item">
-                    <img src="assets/images/banner-2.jpg" alt="Promo 2">
-                    <div class="carousel-caption">Diskon Terbesar Pekan Ini</div>
-                </div>
-                <div class="carousel-item">
-                    <img src="assets/images/banner-3.jpg" alt="Promo 3">
-                    <div class="carousel-caption">Kualitas Bahan Premium</div>
-                </div>
-            </div>
-        </section>
+       <section class="hero-promo" id="promo">
+      <img src="assets/images/banner-1.jpg" alt="Nike Banner" class="hero-bg-img">
+      
+      <div class="hero-overlay-content">
+        <p class="sub-tagline">Tatum 5</p>
+        <h1 class="nike-headline">LOCK IN TO LIFT OFF</h1>
+        <p class="nike-description">
+          Designed for the ultimate lockdown, Jayson Tatum's latest shoe features an innovative mid-foot strap. 'Sunrise' is out now.
+        </p>
+        <a href="#koleksi" class="btn-nike-pill">Shop</a>
+      </div>
+       </section>
+
+    <!-- TICKER TEKS BERJALAN KHAS SPORTS -->
+    <div class="ticker-wrap">
+      <div class="ticker-move">
+        <span class="ticker-item">JUST DO IT</span> • 
+        <span class="ticker-item">NEVER DONE</span> • 
+        <span class="ticker-item">SPORTS ARE EVERYTHING</span> • 
+        <span class="ticker-item">NIKE PERFORMANCE 2026</span> • 
+        <span class="ticker-item">JUST DO IT</span> • 
+        <span class="ticker-item">NEVER DONE</span> • 
+        <span class="ticker-item">SPORTS ARE EVERYTHING</span> • 
+        <span class="ticker-item">NIKE PERFORMANCE 2026</span>
+      </div>
+    </div>
 
         <!-- SECTION 2: PRODUK TERLARIS -->
         <section id="terlaris" class="section">
@@ -158,6 +168,22 @@
             <p>&copy; 2026 Nike Store Official. Seluruh Hak Cipta Dilindungi.</p>
         </div>
     </footer>
+
+    <script>
+    const gridCards = document.querySelector('.grid-cards');
+    const prevBtn = document.querySelector('.prev-btn');
+    const nextBtn = document.querySelector('.next-btn');
+
+    if (gridCards && prevBtn && nextBtn) {
+    nextBtn.addEventListener('click', () => {
+      gridCards.scrollBy({ left: 320, behavior: 'smooth' });
+    });
+
+    prevBtn.addEventListener('click', () => {
+      gridCards.scrollBy({ left: -320, behavior: 'smooth' });
+    });
+}
+</script>
 
 </body>
 </html>
